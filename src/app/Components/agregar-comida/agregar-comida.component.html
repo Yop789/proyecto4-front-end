@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Agregar Comida</h2>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="">Nombre</label>
+        <input type="text" class="form-control" #nombre />
+        <span *ngIf="nombreError" class="text-danger">Nombre es requerido</span>
+      </div>
+
+      <div class="form-group">
+        <label for="">Descripción</label>
+        <input type="text" class="form-control" #descripcion />
+        <span *ngIf="descripcionError" class="text-danger"
+          >Descripción es requerida</span
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="">Categoría</label>
+        <select class="form-control" #categoria>
+          <option *ngFor="let item of categoriaComida" value="{{ item }}">
+            {{ item }}
+          </option>
+        </select>
+        <span *ngIf="categoriaError" class="text-danger"
+          >Categoría es requerida</span
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="">Cantidad</label>
+        <input type="number" class="form-control" #cantidad />
+        <span *ngIf="cantidadError" class="text-danger"
+          >Cantidad es requerida</span
+        >
+      </div>
+
+      <div class="form-group mt-3">
+        <button class="btn btn-info" (click)="agregarComida()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
