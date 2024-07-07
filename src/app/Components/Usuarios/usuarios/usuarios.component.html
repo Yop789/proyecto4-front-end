@@ -1,0 +1,61 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Listado de usuarios</h2>
+
+      <div class="col text-end">
+        <a class="btn btn-info" [routerLink]="['/agregar-usuario']"
+          ><i class="bi bi-plus"></i
+        ></a>
+      </div>
+
+      <table class="table mt-3" *ngIf="data">
+        <thead>
+          <tr>
+            <th scope="col">nombre</th>
+            <th scope="col">rol</th>
+            <th scope="col">apPaterno</th>
+            <th scope="col">apMaterno</th>
+            <th scope="col">edad</th>
+            <th scope="col">telefono</th>
+            <th scope="col">estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data" class="align-middle">
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.rol }}</td>
+            <td>{{ item.apPaterno }}</td>
+            <td>{{ item.apMaterno }}</td>
+            <td>{{ item.edad }}</td>
+            <td>{{ item.telefono }}</td>
+            <td>{{ item.estado }}</td>
+            <td class="text-center">
+              <a
+                class="btn btn-light m-2"
+                [routerLink]="['/edit-usuario/' + item.id]"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </a>
+
+              <button class="btn btn-light m-2" (click)="eliminar(item.id)">
+                <i class="bi bi-trash"></i>
+              </button>
+              <a
+                class="btn btn-light m-2"
+                [routerLink]="['/detalle-usuario/' + item.id]"
+              >
+                <i class="bi bi-info-circle"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center" *ngIf="!data">
+        <div class="spinner-grow" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

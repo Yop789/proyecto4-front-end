@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Agregar Usuarios</h2>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!data">
+    <div class="col-12 text-center">
+      <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="form-group">
+      <label for="">Nombre</label>
+      <input type="text" class="form-control" #nombre />
+      <span *ngIf="submitted && !nombre.value" class="text-danger"
+        >Nombre es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Contraseña</label>
+      <input type="password" class="form-control" #password />
+      <span *ngIf="submitted && !password.value" class="text-danger"
+        >Contraseña es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Nombre de usuario</label>
+      <input type="text" class="form-control" #username />
+      <span *ngIf="submitted && !username.value" class="text-danger"
+        >Nombre de usuario es requerido</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="">Rol del Usuario</label>
+      <select class="form-control" #rol>
+        <option *ngFor="let item of roled" value="{{ item }}">
+          {{ item }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !rol.value" class="text-danger"
+        >Rol del Usuario es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Apellido Paterno</label>
+      <input type="text" class="form-control" #apPaterno />
+      <span *ngIf="submitted && !apPaterno.value" class="text-danger"
+        >Apellido Paterno es requerido</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="">Apellido Materno</label>
+      <input type="text" class="form-control" #apMaterno />
+      <span *ngIf="submitted && !apMaterno.value" class="text-danger"
+        >Apellido Materno es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Edad</label>
+      <input type="number" class="form-control" #edad />
+      <span *ngIf="submitted && !edad.value" class="text-danger"
+        >Edad es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Telegono</label>
+      <input type="text" class="form-control" #telefono />
+      <span *ngIf="submitted && !telefono.value" class="text-danger"
+        >Telegono es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Estado del Usuario</label>
+      <select class="form-control" #estado>
+        <option *ngFor="let item of estadosUsuarios" value="{{ item }}">
+          {{ item }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !estado.value" class="text-danger"
+        >Estado del Usuario es requerido</span
+      >
+    </div>
+
+    <div class="form-group mt-3">
+      <button class="btn btn-info" (click)="guardar()">Actualizar</button>
+      <a class="btn m-1" [routerLink]="['/usuarios']">Volver</a>
+    </div>
+  </div>
+</div>

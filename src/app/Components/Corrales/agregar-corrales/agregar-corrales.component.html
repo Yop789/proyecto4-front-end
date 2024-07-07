@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Agregar Corral</h2>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="form-group">
+      <label for="">Tipo de Suelo del Corral</label>
+      <select class="form-control" #tipo>
+        <option *ngFor="let item of tipoCorralSulo" value="{{ item }}">
+          {{ item }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !tipo.value" class="text-danger"
+        >Tipo de Suelo es requerido</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="">Capacidad por cabeza</label>
+      <input
+        type="number"
+        class="form-control"
+        #capacidad
+        placeholder="Capacidad en cabezas de ganado"
+      />
+      <span *ngIf="submitted && !capacidad.value" class="text-danger"
+        >Capacidad es requerida</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Ubicación</label>
+      <input type="text" class="form-control" #ubicacion />
+      <span *ngIf="submitted && !ubicacion.value" class="text-danger"
+        >Ubicación es requerida</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Estatus</label>
+      <select class="form-control" #estatus>
+        <option *ngFor="let item of tipoCoralEstatus" value="{{ item }}">
+          {{ item }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !estatus.value" class="text-danger"
+        >Estatus es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Tamaño m<sup>2</sup></label>
+      <input type="number" class="form-control" #tamano />
+      <span *ngIf="submitted && !tamano.value" class="text-danger"
+        >Tamaño es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Tipo de Valla</label>
+      <select class="form-control" #categoriaValla>
+        <option *ngFor="let item of tipoCorralValla" value="{{ item }}">
+          {{ item }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !categoriaValla.value" class="text-danger"
+        >Tipo de Valla es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Tipo de Animal</label>
+      <select class="form-control" #tipoAnimal>
+        <option *ngFor="let item of tipoAnimales" value="{{ item }}">
+          {{ item }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !tipoAnimal.value" class="text-danger"
+        >Tipo de Animal es requerido</span
+      >
+    </div>
+
+    <div class="form-group mt-3">
+      <button class="btn btn-info" (click)="agregarCorral()">Guardar</button>
+      <a class="btn m-1" [routerLink]="['/corrales']">Volver</a>
+    </div>
+  </div>
+</div>

@@ -19,12 +19,76 @@
             >Home</a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="#">Features</a>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Usuarios
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/usuarios']"
+                >Listado de Usuarios para limpiar y alimentar animales</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/agregar-usuario']"
+                >Agregar Usuario</a
+              >
+            </li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="#">Pricing</a>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Corrales
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/corrales']"
+                >Listado de Corrales para animales</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/agregar-corral']"
+                >Agregar Corral</a
+              >
+            </li>
+          </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Herramientas
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/herramientas']"
+                >Listado de Herramientas para limpiar y alimentar animales</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/agregar-herramienta']"
+                >Agregar Herramienta</a
+              >
+            </li>
+          </ul>
+        </li>
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle text-white"

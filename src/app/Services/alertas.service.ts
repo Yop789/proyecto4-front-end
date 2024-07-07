@@ -47,7 +47,6 @@ export class AlertasService {
   alertaInfo(mensaje: string) {
     Swal.fire({
       icon: 'info',
-      title: 'Oops...',
       text: mensaje,
     });
   }

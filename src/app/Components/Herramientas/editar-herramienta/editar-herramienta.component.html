@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Editar Herramienta</h2>
+    </div>
+  </div>
+  <div class="row" *ngIf="!datal">
+    <div class="col-12 text-center">
+      <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="form-group">
+      <label for="">Codigo</label>
+      <input type="number" class="form-control" #codigo />
+      <span *ngIf="submitted && !codigo.value" class="text-danger"
+        >Tamaño es requerido</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="">Nombre de la Herramienta</label>
+      <input type="text" class="form-control" #nombre />
+      <span *ngIf="submitted && !nombre.value" class="text-danger"
+        >Nombre es requerida</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="">Descripcion</label>
+      <input type="text" class="form-control" #descripcion />
+      <span *ngIf="submitted && !descripcion.value" class="text-danger"
+        >Descripcion es requerida</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="">Disponibilidad</label>
+      <select class="form-control" #disponibilidad>
+        <option value="0">En Uso</option>
+        <option value="1">Disponible</option>
+      </select>
+      <span *ngIf="submitted && !disponibilidad.value" class="text-danger"
+        >Disponibilidad es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Marca</label>
+      <input type="text" class="form-control" #marca />
+      <span *ngIf="submitted && !marca.value" class="text-danger"
+        >Marca es requerida</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="">Color</label>
+      <input type="text" class="form-control" #color />
+      <span *ngIf="submitted && !color.value" class="text-danger"
+        >Color es requerida</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Tipo de Herramienta</label>
+      <select class="form-control" #tipoHerramienta>
+        <option
+          *ngFor="let item of tipoHe"
+          [selected]="item === datal?.tipo"
+          value="{{ item }}"
+        >
+          {{ item }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !tipoHerramienta.value" class="text-danger"
+        >Tipo de Herramienta es requerido</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="">Estado Actual</label>
+      <select class="form-control" #estado>
+        <option value="0">Fuera de servicio</option>
+        <option value="1">En Servicio</option>
+      </select>
+      <span *ngIf="submitted && !estado.value" class="text-danger"
+        >Estado Actual es requerido</span
+      >
+    </div>
+
+    <div class="form-group mt-3">
+      <button class="btn btn-info" (click)="guardar()">Actualizar</button>
+      <a class="btn m-1" [routerLink]="['/herramientas']">Volver</a>
+    </div>
+  </div>
+</div>

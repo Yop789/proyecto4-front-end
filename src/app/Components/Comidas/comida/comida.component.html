@@ -1,0 +1,60 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Listado de comidas para animales</h2>
+
+      <div class="col text-end">
+        <a class="btn btn-info" [routerLink]="['/agregar-comida']"
+          ><i class="bi bi-plus"></i
+        ></a>
+      </div>
+      <table class="table mt-3" *ngIf="data">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Disponibilidad</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Fecha de reabastecimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data" class="align-middle">
+            <th>{{ item.id }}</th>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.disponibilidad }}</td>
+            <td>{{ item.categoria }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>{{ item.fechaReabasteciendo | date : "dd/MM/yyyy HH:mm" }}</td>
+
+            <td class="text-center">
+              <a
+                class="btn btn-light m-2"
+                [routerLink]="['/edit-comida/' + item.id]"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </a>
+              <button class="btn btn-light m-2" (click)="deleteComida(item.id)">
+                <i class="bi bi-trash"></i>
+              </button>
+              <a
+                class="btn btn-light m-2"
+                [routerLink]="['/detalle-comida/' + item.id]"
+              >
+                <i class="bi bi-info-circle"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center" *ngIf="!data">
+        <div class="spinner-grow" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

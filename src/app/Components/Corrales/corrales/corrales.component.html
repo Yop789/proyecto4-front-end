@@ -1,0 +1,64 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Listado de corrales para animales</h2>
+
+      <div class="col text-end">
+        <a class="btn btn-info" [routerLink]="['/agregar-corral']"
+          ><i class="bi bi-plus"></i
+        ></a>
+      </div>
+
+      <table class="table mt-3" *ngIf="data">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Capacidad</th>
+            <th scope="col">Ubicacion</th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Tamano</th>
+            <th scope="col">TipoValla</th>
+            <th scope="col">TipoAnimal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data" class="align-middle">
+            <th>{{ item.id }}</th>
+            <td>{{ item.tipo }}</td>
+            <td>{{ item.capacidad }}</td>
+            <td>{{ item.ubicacion }}</td>
+            <td>{{ item.estatus }}</td>
+            <td>{{ item.tamano }}</td>
+            <td>{{ item.tipoValla }}</td>
+            <td>{{ item.tipoAnimal }}</td>
+
+            <td class="text-center">
+              <a
+                class="btn btn-light m-2"
+                [routerLink]="['/edit-corral/' + item.id]"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </a>
+              <!-- (click)="deleteComida(item.id)" -->
+              <button class="btn btn-light m-2" (click)="deleteCorral(item.id)">
+                <i class="bi bi-trash"></i>
+              </button>
+              <a
+                class="btn btn-light m-2"
+                [routerLink]="['/detalle-corral/' + item.id]"
+              >
+                <i class="bi bi-info-circle"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center" *ngIf="!data">
+        <div class="spinner-grow" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

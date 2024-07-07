@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Detalles del Corral</h2>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-4" *ngIf="corral">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3>{{ corral.nombre }}</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Tipo de Suelo del Corral:</strong> {{ corral.tipo }}</p>
+          <p>
+            <strong>Capacidad:</strong> {{ corral.capacidad }} cabezas de ganado
+          </p>
+          <p><strong>Ubicación:</strong> {{ corral.ubicacion }}</p>
+          <p><strong>Estatus:</strong> {{ corral.estatus }}</p>
+          <p><strong>Tamaño (m<sup>2</sup>):</strong> {{ corral.tamano }}</p>
+          <p><strong>Tipo de Valla:</strong> {{ corral.tipoValla }}</p>
+          <p><strong>Tipo de Animal:</strong> {{ corral.tipoAnimal }}</p>
+        </div>
+        <div class="card-footer text-right">
+          <a class="btn" [routerLink]="['/corrales']">Volver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!corral">
+    <div class="col-12 text-center">
+      <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>

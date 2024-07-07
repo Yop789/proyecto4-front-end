@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Detalles del Herramientas</h2>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-4" *ngIf="data">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3>{{ data.nombre }}</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Código de identificación:</strong> {{ data.codigo }}</p>
+          <p><strong>Descripción:</strong> {{ data.descripcion }}</p>
+          <p>
+            <strong>Disponibilidad:</strong>
+            {{ data.disponibilidad ? "Disponible" : "En Uso" }}
+          </p>
+          <p><strong>Marca:</strong> {{ data.marca }}</p>
+          <p><strong>Color:</strong> {{ data.color }}</p>
+          <p>
+            <strong>Tipo de Herramienta:</strong> {{ data.tipoHerramienta }}
+          </p>
+          <p>
+            <strong>Estado:</strong>
+            {{ data.estado ? "En Funcionamiento" : "Fuera de servicio" }}
+          </p>
+        </div>
+        <div class="card-footer text-right">
+          <a class="btn" [routerLink]="['/herramientas']">Volver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!data">
+    <div class="col-12 text-center">
+      <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>
