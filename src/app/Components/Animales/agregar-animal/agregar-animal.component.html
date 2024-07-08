@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Agregar un Animal</h2>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="form-group">
+      <label for="">Selecciona el corral al que ingresaras al animal</label>
+      <select class="form-control" #idCorral (change)="getEspecie($event)">
+        <option>-----Selecciona un corral-----</option>
+        <option *ngFor="let item of corrales" value="{{ item.id }}">
+          El corral con capacidad de {{ item.capacidad }} cabeza de
+          {{ item.tipoAnimal }}, con un tamaño de {{ item.tamano }} metros
+          cuadrado y se encuentra
+          {{ item.ubicacion }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !idCorral.value" class="text-danger"
+        >Especie es requerido</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="">Siniiga del Animal</label>
+      <input type="number" class="form-control" #siniiga />
+      <span *ngIf="submitted && !siniiga.value" class="text-danger"
+        >Siniiga del Animal es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Especie</label>
+      <input type="text" class="form-control" #especie disabled />
+      <span *ngIf="submitted && !especie.value" class="text-danger"
+        >Debes de seleccionar un corral para que te asignen la especie</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Genero</label>
+      <select class="form-control" #genero>
+        <option value="Macho">Macho</option>
+        <option value="Hembra">Hembra</option>
+      </select>
+      <span *ngIf="submitted && !genero.value" class="text-danger"
+        >Especie es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Peso del Animal KG</label>
+      <input type="number" class="form-control" #peso />
+      <span *ngIf="submitted && !peso.value" class="text-danger"
+        >Peso del Animal es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Altura del animal CM</label>
+      <input type="number" class="form-control" #altura />
+      <span *ngIf="submitted && !altura.value" class="text-danger"
+        >Altura del animal es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Color del animal</label>
+      <input type="text" class="form-control" #color />
+      <span *ngIf="submitted && !color.value" class="text-danger"
+        >Color del animal es requerido</span
+      >
+    </div>
+
+    <div class="form-group mt-3">
+      <button class="btn btn-info" (click)="guardar()">Guardar</button>
+      <a class="btn m-1" [routerLink]="['/usuarios']">Volver</a>
+    </div>
+  </div>
+</div>

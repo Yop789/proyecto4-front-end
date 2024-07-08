@@ -17,6 +17,10 @@ import { UsuariosComponent } from './Components/Usuarios/usuarios/usuarios.compo
 import { AltaUsuarioComponent } from './Components/Usuarios/alta-usuario/alta-usuario.component';
 import { DetalleUsuarioComponent } from './Components/Usuarios/detalle-usuario/detalle-usuario.component';
 import { EditarUsuarioComponent } from './Components/Usuarios/editar-usuario/editar-usuario.component';
+import { AnimalesComponent } from './Components/Animales/animales/animales.component';
+import { AgregarAnimalComponent } from './Components/Animales/agregar-animal/agregar-animal.component';
+import { DetalleAnimalComponent } from './Components/Animales/detalle-animal/detalle-animal.component';
+import { EditarAnimalComponent } from './Components/Animales/editar-animal/editar-animal.component';
 
 export const routes: Routes = [
   {
@@ -86,6 +90,22 @@ export const routes: Routes = [
   {
     path: 'edit-usuario/:id',
     component: EditarUsuarioComponent,
+  },
+  {
+    path: 'animales',
+    component: AnimalesComponent,
+  },
+  {
+    path: 'agregar-animal',
+    component: AgregarAnimalComponent,
+  },
+  {
+    path: 'detalle-animal/:id',
+    component: DetalleAnimalComponent,
+  },
+  {
+    path: 'edit-animal/:id',
+    component: EditarAnimalComponent,
   },
   {
     path: '',

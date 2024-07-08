@@ -1,0 +1,69 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Listado de Animales</h2>
+
+      <div class="col text-end">
+        <a class="btn btn-info" [routerLink]="['/agregar-animal']"
+          ><i class="bi bi-plus"></i
+        ></a>
+      </div>
+
+      <table class="table mt-3" *ngIf="data">
+        <thead>
+          <tr>
+            <th scope="col">siniiga</th>
+            <th scope="col">especie</th>
+            <th scope="col">genero</th>
+            <th scope="col">peso</th>
+            <th scope="col">altura</th>
+            <th scope="col">color</th>
+            <th scope="col">Corral</th>
+            <th scope="col">fechaNacimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data" class="align-middle">
+            <td>{{ item.siniiga }}</td>
+            <td>{{ item.especie }}</td>
+            <td>{{ item.genero }}</td>
+            <td>{{ item.peso }}</td>
+            <td>{{ item.altura }}</td>
+            <td>{{ item.color }}</td>
+            <td>
+              El corral con capacidad de {{ item.corral.capacidad }} cabeza de
+              {{ item.corral.tipoAnimal }}, con un tamaño de
+              {{ item.corral.tamano }} metros cuadrado y se encuentra
+              {{ item.corral.ubicacion }}
+            </td>
+            <td>{{ item.fechaNacimiento | date : "dd/MM/yyyy HH:mm" }}</td>
+
+            <td class="text-center">
+              <a
+                class="btn btn-light m-2"
+                [routerLink]="['/edit-usuario/' + item.id]"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </a>
+
+              <button class="btn btn-light m-2" (click)="eliminar(item.id)">
+                <i class="bi bi-trash"></i>
+              </button>
+              <a
+                class="btn btn-light m-2"
+                [routerLink]="['/detalle-usuario/' + item.id]"
+              >
+                <i class="bi bi-info-circle"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center" *ngIf="!data">
+        <div class="spinner-grow" especiee="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

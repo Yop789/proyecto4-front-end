@@ -112,6 +112,29 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Animales
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/animales']"
+                >Listado de Animales para animales</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/agregar-animal']"
+                >Agregar animal</a
+              >
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
