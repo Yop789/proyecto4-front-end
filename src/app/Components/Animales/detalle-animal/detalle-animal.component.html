@@ -1,1 +1,50 @@
-<p>detalle-animal works!</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Detalles del Animal</h2>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-4" *ngIf="data">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3>Ganado con siniiga: {{ data.siniiga }}</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Tipo de Especie:</strong> {{ data.especie }}</p>
+          <p><strong>Genero del animal:</strong> {{ data.genero }}</p>
+          <p><strong>Peso del animal:</strong> {{ data.peso }}</p>
+          <p><strong>Altura del animal:</strong> {{ data.altura }}</p>
+          <p><strong>color de piel del animal:</strong> {{ data.tamano }}</p>
+          <p>
+            <strong>Corral:</strong>
+            <a [routerLink]="['/detalle-corral/' + data.corral.id]">
+              <i class="bi bi-info"> </i>
+              En el corral con capacidad de
+              {{ data.corral.capacidad }} cabeza de
+              {{ data.corral.tipoAnimal }}, con un tamaño de
+              {{ data.corral.tamano }} metros cuadrado y se encuentra
+              {{ data.corral.ubicacion }}
+            </a>
+          </p>
+          <p>
+            <strong>Fecha Nacimientos o Ingresos:</strong>
+            {{ data.fechaNacimiento | date : "dd/MM/yyyy" }}
+          </p>
+        </div>
+        <div class="card-footer text-right">
+          <a class="btn" [routerLink]="['/animales']">Volver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!data">
+    <div class="col-12 text-center">
+      <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>

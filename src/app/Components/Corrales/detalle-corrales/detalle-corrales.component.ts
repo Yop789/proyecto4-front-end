@@ -3,6 +3,7 @@ import { CorralesService } from '../../../Services/corrales.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AlertasService } from '../../../Services/alertas.service';
+import { AnimalesService } from '../../../Services/animales.service';
 
 @Component({
   selector: 'app-detalle-corrales',
@@ -14,13 +15,16 @@ import { AlertasService } from '../../../Services/alertas.service';
 export class DetalleCorralesComponent {
   corral: any;
   id = '';
+  animales: any;
   constructor(
     private servceCorrales: CorralesService,
     private router: ActivatedRoute,
-    private alert: AlertasService
+    private alert: AlertasService,
+    private aS: AnimalesService
   ) {
     this.id = this.router.snapshot.params['id'];
     this.getCorralById();
+    this.getAnimalsByCorral();
   }
 
   getCorralById() {
@@ -35,5 +39,11 @@ export class DetalleCorralesComponent {
         );
       }
     );
+  }
+  getAnimalsByCorral() {
+    this.aS.getAnimalesByCorral(this.id).subscribe((data) => {
+      this.animales = data;
+      console.log(this.animales);
+    });
   }
 }

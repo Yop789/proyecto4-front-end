@@ -14,11 +14,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" href="#"
-            >Home</a
-          >
-        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle text-white"
@@ -131,6 +126,29 @@
             <li>
               <a class="dropdown-item" [routerLink]="['/agregar-animal']"
                 >Agregar animal</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Limpieza
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/limpiezas']"
+                >Listado de Limpieza para animales</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/agregar-limpieza']"
+                >Realizar Limpieza</a
               >
             </li>
           </ul>

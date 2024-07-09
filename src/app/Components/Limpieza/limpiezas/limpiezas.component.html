@@ -1,0 +1,62 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Listado de Limpiezas del corral</h2>
+
+      <div class="col text-end">
+        <a class="btn btn-info" [routerLink]="['/agregar-limpieza']"
+          ><i class="bi bi-plus"></i
+        ></a>
+      </div>
+
+      <table class="table mt-3" *ngIf="data">
+        <thead>
+          <tr>
+            <th scope="col">Limpiador</th>
+            <th scope="col">Corral</th>
+            <th scope="col">Fecha Limpieza</th>
+            <th scope="col">Fecha Fin</th>
+            <th scope="col">Estatus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data" class="align-middle">
+            <td>
+              {{ item.limpiador.nombre }} {{ item.limpiador.apPaterno }}
+              {{ item.limpiador.apMaterno }}
+            </td>
+            <td>
+              {{ item.corral.tipo }} {{ item.corral.tipoAnimal }}
+              {{ item.corral.tamano }}
+            </td>
+            <td>{{ item.fecha | date : "dd/MM/yyyy hh:mm" }}</td>
+            <td>{{ item.fechaFinal | date : "dd/MM/yyyy hh:mm" }}</td>
+            <td>{{ item.estado ? "En proceso" : "Terminada" }}</td>
+            <td>{{ item.color }}</td>
+
+            <td class="text-center">
+              <button
+                *ngIf="item.estado"
+                class="btn btn-light m-2"
+                (click)="actualizar(item.id)"
+              >
+                <i class="bi bi-check"></i>
+              </button>
+              <a
+                class="btn btn-light m-2"
+                [routerLink]="['/detalle-limpieza/' + item.id]"
+              >
+                <i class="bi bi-info-circle"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center" *ngIf="!data">
+        <div class="spinner-grow" especiee="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

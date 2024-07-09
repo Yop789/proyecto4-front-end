@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Agregar un Animal</h2>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="form-group">
+      <label for="">Selecciona el corral al que ingresaras al animal</label>
+      <select class="form-control" #idCorral>
+        <option>-----Selecciona un corral-----</option>
+        <option *ngFor="let item of corrales" value="{{ item.id }}">
+          El corral con capacidad de {{ item.capacidad }} cabeza de
+          {{ item.tipoAnimal }}, con un tamaño de {{ item.tamano }} metros
+          cuadrado y se encuentra
+          {{ item.ubicacion }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !idCorral.value" class="text-danger"
+        >Especie es requerido</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="">Seleciona un trabajador</label>
+      <select class="form-control" #idUser>
+        <option>-----Selecciona un trabajador-----</option>
+        <option *ngFor="let item of usuarios" value="{{ item.id }}">
+          {{ item.nombre }} {{ item.apPaterno }} {{ item.apMaterno }}
+        </option>
+      </select>
+      <span *ngIf="submitted && !idUser.value" class="text-danger"
+        >Seleciona un trabajador es requerido</span
+      >
+    </div>
+    <label for="" class="mt-3">Selecciona una herramienta para limpiar</label>
+    <div class="form-group">
+      <div class="row align-content-center justify-content-center">
+        <div class="col-6">
+          <div class="form-group">
+            <select
+              class="form-control"
+              #herramienta
+              (change)="agregarHeramientaArray($event)"
+            >
+              <option>-----Selecciona una herramienta-----</option>
+              <option *ngFor="let item of herramientas" [value]="item | json">
+                {{ item.codigo }} {{ item.nombre }} {{ item.color }}
+                {{ item.marca }}
+              </option>
+            </select>
+            <span *ngIf="submitted && !herramienta.value" class="text-danger"
+              >Selecion una herramienta para limpiar es requerido</span
+            >
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="form-group">
+            <button class="btn btn-info" (click)="AgregarHerramientas()">
+              <i class="bi bi-plus"></i>
+            </button>
+            <button class="btn btn-light" (click)="vaciarHerramienta()">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-content-center justify-content-center mt-3">
+        <div class="col-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Color</th>
+                <th>Marca</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of herramintasLimpieza">
+                <td>{{ item.codigo }}</td>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.color }}</td>
+                <td>{{ item.marca }}</td>
+
+                <td class="text-center">
+                  <button
+                    class="btn btn-light"
+                    (click)="eliminarHerramienta(item.codigo)"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <button class="btn btn-info" (click)="guardar()">Guardar</button>
+        <a class="btn m-1" [routerLink]="['/usuarios']">Volver</a>
+      </div>
+    </div>
+  </div>
+</div>

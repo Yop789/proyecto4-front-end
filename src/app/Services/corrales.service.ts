@@ -65,4 +65,7 @@ export class CorralesService {
   getEstatusCorrales() {
     return this.http.get(`${this.url}/tipos/estatus`);
   }
+  getEspecieCorrales(especie: string) {
+    return this.http.get(`${this.url}/especie/${especie}`);
+  }
 }

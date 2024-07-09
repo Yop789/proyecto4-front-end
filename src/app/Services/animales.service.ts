@@ -53,4 +53,7 @@ export class AnimalesService {
   getEstadosAnimales() {
     return this.http.get(`${this.url}/estatus`);
   }
+  getAnimalesByCorral(id: string) {
+    return this.http.get(`${this.url}/corral/${id}`);
+  }
 }

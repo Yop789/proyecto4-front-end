@@ -21,6 +21,17 @@
           <p><strong>Tamaño (m<sup>2</sup>):</strong> {{ corral.tamano }}</p>
           <p><strong>Tipo de Valla:</strong> {{ corral.tipoValla }}</p>
           <p><strong>Tipo de Animal:</strong> {{ corral.tipoAnimal }}</p>
+          <p><strong>Cntidad de Animales:</strong> {{ animales.length }}</p>
+          <div>
+            <strong>Animales:</strong>
+            <li *ngFor="let item of animales">
+              <a [routerLink]="['/detalle-animal/' + item.id]">
+                <i class="bi bi-info"> </i>
+                Siniiga: {{ item.siniiga }} Especie: {{ item.especie }} Genero:
+                {{ item.genero }}
+              </a>
+            </li>
+          </div>
         </div>
         <div class="card-footer text-right">
           <a class="btn" [routerLink]="['/corrales']">Volver</a>

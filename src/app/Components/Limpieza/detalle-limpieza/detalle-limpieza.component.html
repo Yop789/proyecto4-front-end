@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2>Detalles del Limpieza</h2>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-4" *ngIf="data">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3>
+            Limpieza ID: {{ data.id }}
+            <a [routerLink]="['/detalle-corral/' + data.corral.id]"
+              >Corral ID: {{ data.corral.id }}
+            </a>
+            fecha:
+            {{ data.fecha | date : "dd/MM/yyyy" }}
+          </h3>
+        </div>
+        <div class="card-body">
+          <p>
+            <a [routerLink]="['/detalle-usuario/' + data.limpiador.id]"
+              ><i class="bi bi-info"> </i>
+              <strong>Nombre de la persona:</strong>
+              {{ data.limpiador.nombre }} {{ data.limpiador.apPaterno }}
+              {{ data.limpiador.apMaterno }}
+            </a>
+          </p>
+          <p>
+            <a [routerLink]="['/detalle-corral/' + data.corral.id]"
+              ><i class="bi bi-info"> </i>
+              <strong>Corral:</strong>
+
+              En el corral con capacidad de
+              {{ data.corral.capacidad }} cabeza de
+              {{ data.corral.tipoAnimal }}, con un tamaño de
+              {{ data.corral.tamano }} metros cuadrado y se encuentra
+              {{ data.corral.ubicacion }}
+            </a>
+          </p>
+          <p>
+            <strong>Fecha:</strong>
+            {{ data.fecha | date : "dd/MM/yyyy" }}
+          </p>
+
+          <p>
+            <strong>Fecha Final:</strong>
+            {{ data.fechaFinal | date : "dd/MM/yyyy" }}
+          </p>
+
+          <p>
+            <strong>Observaciones:</strong>
+            {{ data.estado ? "En proceso" : "Terminada" }}
+          </p>
+          <div>
+            <strong>Herramientas:</strong>
+            <li *ngFor="let item of detalle">
+              <a [routerLink]="['/detalle-herramienta/' + item.herramienta.id]">
+                <i class="bi bi-info"> </i>
+                {{ item.herramienta.nombre }} {{ item.herramienta.marca }}
+              </a>
+            </li>
+          </div>
+        </div>
+        <div class="card-footer text-right">
+          <a class="btn" [routerLink]="['/limpiezas']">Volver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!data">
+    <div class="col-12 text-center">
+      <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>

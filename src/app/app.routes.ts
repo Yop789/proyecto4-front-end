@@ -1,6 +1,5 @@
 import { DetalleCorralesComponent } from './Components/Corrales/detalle-corrales/detalle-corrales.component';
 import { Routes } from '@angular/router';
-import { HomeComponent } from './Components/home/home.component';
 import { ComidaComponent } from './Components/Comidas/comida/comida.component';
 
 import { EditarComidaComponent } from './Components/Comidas/editar-comida/editar-comida.component';
@@ -21,12 +20,11 @@ import { AnimalesComponent } from './Components/Animales/animales/animales.compo
 import { AgregarAnimalComponent } from './Components/Animales/agregar-animal/agregar-animal.component';
 import { DetalleAnimalComponent } from './Components/Animales/detalle-animal/detalle-animal.component';
 import { EditarAnimalComponent } from './Components/Animales/editar-animal/editar-animal.component';
+import { LimpiezasComponent } from './Components/Limpieza/limpiezas/limpiezas.component';
+import { RealizarLimpiezaComponent } from './Components/Limpieza/realizar-limpieza/realizar-limpieza.component';
+import { DetalleLimpiezaComponent } from './Components/Limpieza/detalle-limpieza/detalle-limpieza.component';
 
 export const routes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
   {
     path: 'comidas',
     component: ComidaComponent,
@@ -108,8 +106,24 @@ export const routes: Routes = [
     component: EditarAnimalComponent,
   },
   {
+    path: 'limpiezas',
+    component: LimpiezasComponent,
+  },
+  {
+    path: 'agregar-limpieza',
+    component: RealizarLimpiezaComponent,
+  },
+  {
+    path: 'detalle-limpieza/:id',
+    component: DetalleLimpiezaComponent,
+  },
+  {
+    path: 'edit-animal/:id',
+    component: EditarAnimalComponent,
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '/usuarios',
     pathMatch: 'full',
   },
 ];
