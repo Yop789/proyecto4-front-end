@@ -1,22 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CorralesService } from '../../../Services/corrales.service';
 import { UsuariosService } from '../../../Services/usuarios.service';
 import { HerramientasService } from '../../../Services/herramientas.service';
-import { Detalle, Limpieza, LimpiezaDetalles } from '../../../Models/limpieza';
-import { DetalleHerramientaComponent } from '../../Herramientas/detalle-herramienta/detalle-herramienta.component';
-import { LimpiezaService } from '../../../Services/limpieza.service';
+import { AlimentarDetalles, DetalleAlimentar } from '../../../Models/alimentar';
+import { AlimentarService } from '../../../Services/alimentar.service';
 import { AlertasService } from '../../../Services/alertas.service';
+import { ComidaService } from '../../../Services/comida.service';
 
 @Component({
-  selector: 'app-realizar-limpieza',
+  selector: 'app-realizar-alimentacion',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './realizar-limpieza.component.html',
-  styleUrl: './realizar-limpieza.component.scss',
+  templateUrl: './realizar-alimentacion.component.html',
+  styleUrl: './realizar-alimentacion.component.scss',
 })
-export class RealizarLimpiezaComponent {
+export class RealizarAlimentacionComponent {
   submitted = false;
 
   corrales: any;
@@ -27,20 +27,23 @@ export class RealizarLimpiezaComponent {
 
   herramintasLimpieza: any[] = [];
 
+  comidas: any;
+
   objet: any;
+  @ViewChild('herramienta') herramienta!: ElementRef;
 
-  @ViewChild('herramienta') herramienta!: any;
+  @ViewChild('idUser') idUser!: ElementRef;
 
-  @ViewChild('idUser') idUser!: any;
-
-  @ViewChild('idCorral') idCorral!: any;
-
+  @ViewChild('idCorral') idCorral!: ElementRef;
+  @ViewChild('idComida') idComida!: ElementRef;
+  @ViewChild('cantidad') cantidad!: ElementRef;
   constructor(
     private sC: CorralesService,
     private sU: UsuariosService,
     private sH: HerramientasService,
-    private sL: LimpiezaService,
-    private alert: AlertasService
+    private s: AlimentarService,
+    private alert: AlertasService,
+    private sCO: ComidaService
   ) {
     this.getDtBD();
   }
@@ -49,7 +52,9 @@ export class RealizarLimpiezaComponent {
     this.getCorrales();
     this.getUsuarios();
     this.getHerramientas();
+    this.getComidas();
   }
+
   guardar() {
     this.submitted = true;
     if (
@@ -57,11 +62,12 @@ export class RealizarLimpiezaComponent {
       this.idUser.nativeElement.value == '-----Selecciona un trabajador-----' ||
       this.idCorral.nativeElement.value == '-----Selecciona un corral-----'
     ) {
+      this.alert.alertaError('Llena todos los campos');
       return;
     }
-    const detalles: Detalle[] = [];
+    const detalles: DetalleAlimentar[] = [];
     for (const item of this.herramintasLimpieza) {
-      const detalle: Detalle = {
+      const detalle: DetalleAlimentar = {
         id_herramienta: item.id,
         fecha: new Date(),
         fechaFin: new Date(),
@@ -69,17 +75,19 @@ export class RealizarLimpiezaComponent {
 
       detalles.push(detalle);
     }
-    const limpieza: LimpiezaDetalles = {
-      id_limpiador: this.idUser.nativeElement.value,
+    const limpieza: AlimentarDetalles = {
+      id_alimentador: this.idUser.nativeElement.value,
       id_corral: this.idCorral.nativeElement.value,
       fecha: new Date(),
-      fechaFin: new Date(),
+      cantidad: this.cantidad.nativeElement.value,
+      fechaFinal: new Date(),
       estado: true,
       herramientas: detalles,
+      id_comida: this.idComida.nativeElement.value,
     };
-    this.sL.addLimpieza(limpieza);
+    console.log(limpieza);
+    this.s.addAlimentar(limpieza);
   }
-
   getCorrales() {
     this.sC.getCorrales().subscribe((resp) => {
       this.corrales = resp;
@@ -89,6 +97,12 @@ export class RealizarLimpiezaComponent {
   getUsuarios() {
     this.sU.getUsuarios().subscribe((resp) => {
       this.usuarios = resp;
+    });
+  }
+
+  getComidas() {
+    this.sCO.getComida().subscribe((resp: any) => {
+      this.comidas = resp;
     });
   }
 

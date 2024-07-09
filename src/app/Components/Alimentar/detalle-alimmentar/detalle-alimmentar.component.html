@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-12 text-center">
-      <h2>Detalles de la Tarea de Limpieza</h2>
+      <h2>Detalles del Alimentación</h2>
     </div>
   </div>
 
@@ -10,7 +10,7 @@
       <div class="card">
         <div class="card-header">
           <h3>
-            Limpieza ID: {{ data.id }}
+            Alimentación ID: {{ data.id }}
             <a [routerLink]="['/detalle-corral/' + data.corral.id]"
               >Corral ID: {{ data.corral.id }}
             </a>
@@ -20,11 +20,11 @@
         </div>
         <div class="card-body">
           <p>
-            <a [routerLink]="['/detalle-usuario/' + data.limpiador.id]"
+            <a [routerLink]="['/detalle-usuario/' + data.alimentador.id]"
               ><i class="bi bi-info"> </i>
-              <strong>Nombre de la persona:</strong>
-              {{ data.limpiador.nombre }} {{ data.limpiador.apPaterno }}
-              {{ data.limpiador.apMaterno }}
+              <strong>Nombre del Trabajador:</strong>
+              {{ data.alimentador.nombre }} {{ data.alimentador.apPaterno }}
+              {{ data.alimentador.apMaterno }}
             </a>
           </p>
           <p>
@@ -53,6 +53,17 @@
             <strong>Observaciones:</strong>
             {{ data.estado ? "En proceso" : "Terminada" }}
           </p>
+
+          <p>
+            <strong>Comida:</strong>
+            Comida: {{ data.comida.nombre }} descripcion:
+            {{ data.comida.descripcion }}
+          </p>
+          <p>
+            <strong>cantidad:</strong>
+            {{ data.comida.cantidad }}
+          </p>
+
           <div>
             <strong>Herramientas:</strong>
             <li *ngFor="let item of detalle">
@@ -64,7 +75,7 @@
           </div>
         </div>
         <div class="card-footer text-right">
-          <a class="btn" [routerLink]="['/limpiezas']">Volver</a>
+          <a class="btn" [routerLink]="['/alimentar']">Volver</a>
         </div>
       </div>
     </div>

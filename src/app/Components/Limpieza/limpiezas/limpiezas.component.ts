@@ -28,7 +28,7 @@ export class LimpiezasComponent {
       (res) => {
         if (res) {
           this.getHistoriaLimpieza();
-          this.alert.alertaInfo('Limpieza Actualizada');
+          this.alert.alertaInfo('Tarea Limpieza Terminada');
         }
       },
       (err) => {

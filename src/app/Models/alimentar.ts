@@ -21,8 +21,6 @@ export interface AlimentarID {
 }
 
 export interface DetalleAlimentar {
-  id_alimetacion: string;
-
   id_herramienta: string;
 
   fecha: Date;

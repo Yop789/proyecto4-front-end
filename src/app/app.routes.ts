@@ -23,6 +23,9 @@ import { EditarAnimalComponent } from './Components/Animales/editar-animal/edita
 import { LimpiezasComponent } from './Components/Limpieza/limpiezas/limpiezas.component';
 import { RealizarLimpiezaComponent } from './Components/Limpieza/realizar-limpieza/realizar-limpieza.component';
 import { DetalleLimpiezaComponent } from './Components/Limpieza/detalle-limpieza/detalle-limpieza.component';
+import { AlimentarComponent } from './Components/Alimentar/alimentar/alimentar.component';
+import { RealizarAlimentacionComponent } from './Components/Alimentar/realizar-alimentacion/realizar-alimentacion.component';
+import { DetalleAlimmentarComponent } from './Components/Alimentar/detalle-alimmentar/detalle-alimmentar.component';
 
 export const routes: Routes = [
   {
@@ -118,8 +121,16 @@ export const routes: Routes = [
     component: DetalleLimpiezaComponent,
   },
   {
-    path: 'edit-animal/:id',
-    component: EditarAnimalComponent,
+    path: 'alimentar',
+    component: AlimentarComponent,
+  },
+  {
+    path: 'agregar-alimentar',
+    component: RealizarAlimentacionComponent,
+  },
+  {
+    path: 'detalle-alimentar/:id',
+    component: DetalleAlimmentarComponent,
   },
   {
     path: '',

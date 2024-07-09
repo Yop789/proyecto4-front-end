@@ -7,32 +7,32 @@ import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root',
 })
-export class LimpiezaService {
-  url = environment.url + 'limpiar';
-  urlDetalle = environment.url + 'detallelimpiar';
+export class AlimentarService {
+  url = `${environment.url}alimentar`;
+  urlDetalle = `${environment.url}detallealimentar`;
   constructor(private http: HttpClient, private alert: AlertasService) {}
 
-  getLimpiezas() {
+  getalimentar() {
     return this.http.get(this.url);
   }
 
-  getLimpieza(id: string) {
+  getAlimentar(id: string) {
     return this.http.get(`${this.url}/${id}`);
   }
 
-  getLimpiezaId(id: string) {
+  getAlimentarId(id: string) {
     return this.http.get(`${this.url}/${id}`);
   }
 
-  deleteLimpieza(id: string) {
+  deleteAlimentar(id: string) {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  addLimpieza(limpieza: any) {
-    return this.http.post(`${this.url}/seven-herramienta`, limpieza).subscribe(
+  addAlimentar(Alimentar: any) {
+    return this.http.post(`${this.url}/seven-herramienta`, Alimentar).subscribe(
       (res) => {
         if (res) {
-          this.alert.alertaSuccess('/limpiezas', 'Tarea limpieza iniciada');
+          this.alert.alertaSuccess('/alimentar', 'Tarea alimentar iniciada');
         }
       },
       (error) => {
@@ -41,11 +41,11 @@ export class LimpiezaService {
     );
   }
 
-  updateLimpieza(id: any) {
+  updateAlimentar(id: any) {
     return this.http.get(`${this.url}/actualizar/${id}`);
   }
 
-  getDetalleLimpieza(id: string) {
-    return this.http.get(`${this.urlDetalle}/limpieza/${id}`);
+  getDetalleAlimentar(id: string) {
+    return this.http.get(`${this.urlDetalle}/alimentar/${id}`);
   }
 }

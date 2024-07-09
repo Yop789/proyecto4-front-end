@@ -1,10 +1,10 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-12 text-center">
-      <h2>Tareas de Limpieza</h2>
+      <h2>Listado de Tarea de Limpieza de Animales</h2>
 
       <div class="col text-end">
-        <a class="btn btn-info" [routerLink]="['/agregar-limpieza']"
+        <a class="btn btn-info" [routerLink]="['/agregar-alimentar']"
           ><i class="bi bi-plus"></i
         ></a>
       </div>
@@ -12,7 +12,7 @@
       <table class="table mt-3" *ngIf="data">
         <thead>
           <tr>
-            <th scope="col">Limpiador</th>
+            <th scope="col">Alimentador</th>
             <th scope="col">Corral</th>
             <th scope="col">Fecha Limpieza</th>
             <th scope="col">Fecha Fin</th>
@@ -22,8 +22,8 @@
         <tbody>
           <tr *ngFor="let item of data" class="align-middle">
             <td>
-              {{ item.limpiador.nombre }} {{ item.limpiador.apPaterno }}
-              {{ item.limpiador.apMaterno }}
+              {{ item.alimentador.nombre }} {{ item.alimentador.apPaterno }}
+              {{ item.alimentador.apMaterno }}
             </td>
             <td>
               {{ item.corral.tipo }} {{ item.corral.tipoAnimal }}
@@ -44,7 +44,7 @@
               </button>
               <a
                 class="btn btn-light m-2"
-                [routerLink]="['/detalle-limpieza/' + item.id]"
+                [routerLink]="['/detalle-alimentar/' + item.id]"
               >
                 <i class="bi bi-info-circle"></i>
               </a>
